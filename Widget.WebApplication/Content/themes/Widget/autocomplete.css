@@ -1,0 +1,69 @@
+﻿/*!
+ * jQuery UI Autocomplete 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/autocomplete/#theming
+ */
+.ui-zsl-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+}
+
+
+
+/* Customized */
+
+/*.ui-zsl-autocomplete-input.ui-zsl-autocomplete-loading {
+    background-image: url('../../Images/Others/loading-small.gif');
+    background-position: right center;
+    background-repeat: no-repeat;
+}*/
+
+.ui-zsl-autocomplete {
+    max-height: initial;
+}
+
+    .ui-zsl-autocomplete .ui-zsl-autocomplete-highlight {
+        font-weight: bold;
+    }
+
+    .ui-zsl-autocomplete .ui-zsl-menu-item {
+        font-size: 1em;
+    }
+
+        .ui-zsl-autocomplete .ui-zsl-menu-item:nth-child(odd) {
+            background-color: #eee;
+        }
+
+    .ui-zsl-autocomplete .hashotel a {
+        color: #000;
+    }
+
+    .ui-zsl-autocomplete .nohotel a {
+        color: #919191;
+    }
+
+    .ui-zsl-autocomplete ul {
+        box-sizing: inherit;
+    }
+
+    .ui-zsl-autocomplete li {
+        box-sizing: inherit;
+        line-height: 1.5em;
+    }
+
+    .ui-zsl-autocomplete .ui-zsl-autocomplete-footer {
+        font-size: 12px;
+        background-color: #ccc;
+        color: #666;
+        border-top: 1px solid #808080;
+        padding: 2px 5px;
+        margin: 0px;
+        display: block;
+    }

@@ -1,0 +1,67 @@
+﻿/*!
+ * jQuery UI Menu 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/menu/#theming
+ */
+.ui-zsl-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: block;
+	outline: none;
+}
+.ui-zsl-menu .ui-zsl-menu {
+	position: absolute;
+}
+.ui-zsl-menu .ui-zsl-menu-item {
+	position: relative;
+	margin: 0;
+	padding: 3px 1em 3px .4em;
+	cursor: pointer;
+	min-height: 0; /* support: IE7 */
+	/* support: IE10, see #8844 */
+	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+}
+.ui-zsl-menu .ui-zsl-menu-divider {
+	margin: 5px 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	border-width: 1px 0 0 0;
+}
+.ui-zsl-menu .ui-zsl-state-focus,
+.ui-zsl-menu .ui-zsl-state-active {
+	margin: -1px;
+}
+
+/* icon support */
+.ui-zsl-menu-icons {
+	position: relative;
+}
+.ui-zsl-menu-icons .ui-zsl-menu-item {
+	padding-left: 2em;
+}
+
+/* left-aligned */
+.ui-zsl-menu .ui-zsl-icon {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: .2em;
+	margin: auto 0;
+}
+
+/* right-aligned */
+.ui-zsl-menu .ui-zsl-menu-icon {
+	left: auto;
+	right: 0;
+}
+
+
+
+/* Customized */

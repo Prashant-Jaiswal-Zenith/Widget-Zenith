@@ -1,0 +1,138 @@
+﻿@using Widget.WebApplication.Models
+
+@model PropertySearchParameterUIModel
+
+<div>
+    <div id="searchWidget">
+        @using (Html.BeginForm("Hotel", "Home", FormMethod.Post)) {
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.CityName, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.CityName,
+                        new {
+                            @class = "form-control widget-autocomplete",
+                            @placeholder = "City",
+                            data_url = ViewBag.DataUrl
+                        })
+                    @Html.HiddenFor(m => m.CityId)
+                    @Html.ValidationMessageFor(m => m.CityName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.CheckIn, new { @class = "control-label" })
+                    <div class="input-group">
+                        <span class="input-group-addon" id="addon-checkIn"></span>
+                        @Html.TextBoxFor(
+                            m => m.CheckIn,
+                            format: "dd-mm-yyyy",
+                            htmlAttributes: new {
+                                @class = "form-control date-picker",
+                                @placeholder = "Select date",
+                                data_format = "dd-mm-yy"
+                            })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.CheckIn, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.CheckOut, new { @class = "control-label" })
+                    <div class="input-group">
+                        <span class="input-group-addon" id="addon-checkOut"></span>
+                        @Html.TextBoxFor(
+                            m => m.CheckOut,
+                            format: "dd-mm-yyyy",
+                            htmlAttributes: new {
+                                @class = "form-control date-picker",
+                                @placeholder = "Select date",
+                                data_format = "dd-mm-yy"
+                            })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.CheckOut, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Rooms:</h5>
+                    @if (ViewBag.MaxRooms > 1) {
+                        @Html.DropDownListFor(m => m.NoOfRooms,
+                            new SelectList(
+                                (IEnumerable<SelectListItem>)ViewBag.Rooms,
+                                "Value",
+                                "Text"),
+                            new { @class = "form-control", @id = "ddlSearchWidgetRooms" })
+                    } else {
+                        @Html.HiddenFor(m => m.NoOfRooms)
+                        <h5>@Html.DisplayFor(m => m.NoOfRooms)</h5>
+                    }
+                </div>
+                <div class="col-md-offset-1 col-md-6">
+                    <div class="form-group-sm">
+                        <div class="row">
+                            <div class="col-xs-2">
+
+                            </div>
+                            <div class="col-xs-5">
+                                <h5>Adults:</h5>
+                            </div>
+                            <div class="col-xs-5">
+                                <h5>Children:</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-sm">
+                        <ul class="roomSelection">
+                            @foreach (var room in Model.Rooms) {
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <h5>#@room.RoomNo</h5>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownList("ddlAdults",
+                                                new SelectList(
+                                                    (IEnumerable<SelectListItem>)ViewBag.Adults,
+                                                    "Value",
+                                                    "Text",
+                                                    room.NoOfAdults),
+                                                    new {
+                                                        @class = "form-control",
+                                                        @id = "ddlSearchWidgetAdult" + room.RoomNo,
+                                                        @onchange = "SearchWidgetModule.roomAdultSelectionChange(" + room.RoomNo + ")"
+                                                    })
+                                        </div>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownList("ddlChild",
+                                                new SelectList(
+                                                    (IEnumerable<SelectListItem>)ViewBag.Children,
+                                                    "Value",
+                                                    "Text",
+                                                    room.NoOfChildren),
+                                                    new {
+                                                        @class = "form-control",
+                                                        @id = "ddlSearchWidgetChild" + room.RoomNo
+                                                    })
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit"
+                           value="Search"
+                           class="btn btn-default col-md-4" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
